@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    // Public variables
     public float speed;
     public bool vertical;
     public float changeTime = 3.0f;
 
+    // Private variables
     Rigidbody2D rigidbody2d;
+    Animator animator;
     float timer;
     int direction = 1;
 
-    Animator animator;
 
+    // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        timer = changeTime;
         animator = GetComponent<Animator>();
+        timer = changeTime;
+
     }
+
     void Update()
     {
         timer -= Time.deltaTime;
+
 
         if (timer < 0)
         {
@@ -30,6 +36,9 @@ public class EnemyController : MonoBehaviour
             timer = changeTime;
         }
     }
+
+
+    // FixedUpdate has the same call rate as the physics system
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
@@ -37,20 +46,25 @@ public class EnemyController : MonoBehaviour
         if (vertical)
         {
             position.y = position.y + speed * direction * Time.deltaTime;
-            animator.SetFloat("Move X", 0);
-            animator.SetFloat("Move Y", direction);
+            animator.SetFloat("MoveX", 0);
+            animator.SetFloat("MoveY", direction);
         }
         else
         {
             position.x = position.x + speed * direction * Time.deltaTime;
-            animator.SetFloat("Move X", direction);
-            animator.SetFloat("Move Y", 0);
+            animator.SetFloat("MoveX", direction);
+            animator.SetFloat("MoveY", 0);
         }
+
+
         rigidbody2d.MovePosition(position);
     }
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
+
 
         if (player != null)
         {
