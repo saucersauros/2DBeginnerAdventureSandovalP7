@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7941462591123897500
+--- !u!1 &8294771528103652112
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8014152636252068912}
-  - component: {fileID: 6960246060305877176}
-  - component: {fileID: 1530160877597910366}
-  - component: {fileID: 1219613901015700811}
+  - component: {fileID: 8043098942692342204}
+  - component: {fileID: 6368459346093231359}
+  - component: {fileID: 4286990646481850189}
+  - component: {fileID: 6650391176905113672}
   m_Layer: 0
-  m_Name: DamageZone (1)
+  m_Name: CollectibleHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8014152636252068912
+--- !u!4 &8043098942692342204
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7941462591123897500}
+  m_GameObject: {fileID: 8294771528103652112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.2, y: -24.7, z: 0}
-  m_LocalScale: {x: 0.39896, y: 0.39896, z: 0.39896}
+  m_LocalPosition: {x: 0.3, y: -13.33, z: 0}
+  m_LocalScale: {x: 0.45199, y: 0.45199, z: 0.45199}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6960246060305877176
+--- !u!212 &6368459346093231359
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7941462591123897500}
+  m_GameObject: {fileID: 8294771528103652112}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,24 +75,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 13249ead3faf799469c8786003b8d91e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d3ab281567f94c4b84d23954c7d5943, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 10.682125, y: 5.266595}
+  m_DrawMode: 0
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 1
+  m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 1
---- !u!61 &1530160877597910366
+  m_SpriteSortPoint: 0
+--- !u!61 &4286990646481850189
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7941462591123897500}
+  m_GameObject: {fileID: 8294771528103652112}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -118,29 +118,29 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.07425332}
   m_SpriteTilingProperty:
-    border: {x: 0.08, y: 0.04, z: 0.14, w: 0.08}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.64, y: 1.64}
-    newSize: {x: 10.682125, y: 5.266595}
+    oldSize: {x: 4, y: 4}
+    newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 1
-  m_AutoTiling: 1
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.64, y: 1.64}
+  m_Size: {x: 4, y: 2.4159465}
   m_EdgeRadius: 0
---- !u!114 &1219613901015700811
+--- !u!114 &6650391176905113672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7941462591123897500}
+  m_GameObject: {fileID: 8294771528103652112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad85e9365c65fba4e9684da4f70f2a00, type: 3}
+  m_Script: {fileID: 11500000, guid: 85503c9dc6c567c46bfa73c52090ae83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oof: {fileID: 8300000, guid: c7d3a91ac32abbe47a8931a8ffc37bc6, type: 3}
+  collectClip: {fileID: 8300000, guid: 173a14cf06354c643b46b235f2a4f974, type: 3}
