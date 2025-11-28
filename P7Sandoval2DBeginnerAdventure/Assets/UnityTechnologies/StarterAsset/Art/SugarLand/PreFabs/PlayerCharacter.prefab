@@ -100,6 +100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f73e94fc9570c245949f37097bff5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talkAction:
+    m_Name: Talk
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e01c12d8-2f58-430e-8f4c-309264a628ad
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   projectilePrefab: {fileID: 3979521482427571051, guid: 079306d430f7bf940ab62c29030cc78f,
     type: 3}
   MoveAction:
