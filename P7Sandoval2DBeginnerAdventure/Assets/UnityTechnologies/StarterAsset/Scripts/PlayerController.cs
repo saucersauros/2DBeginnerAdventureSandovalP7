@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerController : MonoBehaviour
 {
+    AudioSource audioSource;
+    public InputAction talkAction;
+
+    public GameObject projectilePrefab;
+
     // Variables related to player character movement
     public InputAction MoveAction;
     Rigidbody2D rigidbody2d;
@@ -32,6 +39,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        talkAction.Enable();
         MoveAction.Enable();
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -44,7 +53,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         move = MoveAction.ReadValue<Vector2>();
-
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
@@ -63,6 +71,16 @@ public class PlayerController : MonoBehaviour
             damageCooldown -= Time.deltaTime;
             if (damageCooldown < 0)
                 isInvincible = false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            Launch();
+        }
+
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            FindFriend();
         }
     }
 
@@ -91,4 +109,31 @@ public class PlayerController : MonoBehaviour
         UiHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
     }
 
+    void Launch()
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(moveDirection, 300);
+        animator.SetTrigger("Launch");
+    }
+
+    void FindFriend()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, moveDirection, 1.5f, LayerMask.GetMask("NPC"));
+        if (hit.collider != null)
+        {
+            NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
+            if (character != null)
+            {
+                UiHandler.instance.DisplayDialogue();
+            }
+        }
+    }
+    
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+
+    
 }
