@@ -9,10 +9,9 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        rigidbody2d = GetComponent<Rigidbbody2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
-<<<<<<< HEAD
     public void Launch(Vector2 direction, float force)
     {
         rigidbody2d.AddForce(direction * force);
@@ -20,40 +19,40 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider2D other)
     {
         Debug.Log("Projectile collision with" + other.gameObject);
-=======
-    void Awake()
-    {
-        rigidbody2d = GetComponent<Rigidbody2D>();  
-    }
-    void Update()
-    {
-        if (transform.position.magnitude > 100.0f)
+
+        void Awake()
+        {
+            rigidbody2d = GetComponent<Rigidbody2D>();
+        }
+        void Update()
+        {
+            if (transform.position.magnitude > 100.0f)
+            {
+                Destroy(gameObject);
+            }
+        }
+        // Update is called once per frame
+        void Launch(Vector2 direction, float force)
+        {
+            Vector2 finalForce = direction.normalized * force;
+            finalForce += Vector2.up * (force * 0.5f);
+
+            rigidbody2d.AddForce(finalForce, ForceMode2D.Impulse);
+        }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            EnemyController enemy = other.GetComponent<EnemyController>();
+            if (enemy != null)
+            {
+                enemy.Fix();
+            }
+            Destroy(gameObject);
+        }
+
+        void OnCollisionEnter2D(Collision2D other)
         {
             Destroy(gameObject);
         }
-    }
-    // Update is called once per frame
-    public void Launch(Vector2 direction, float force)
-    {
-        Vector2 finalForce = direction.normalized * force;
-        finalForce += Vector2.up * (force * 0.5f);
-       
-        rigidbody2d.AddForce(finalForce, ForceMode2D.Impulse);
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        EnemyController enemy = other.GetComponent<EnemyController>();
-        if (enemy != null)
-        {
-            enemy.Fix();
-        }
-        Destroy(gameObject);
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
->>>>>>> a5db87a957f23c65806d348ae27ca515fa77bb58
-        Destroy(gameObject);
     }
 }
